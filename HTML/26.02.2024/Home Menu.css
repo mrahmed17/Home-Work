@@ -1,0 +1,48 @@
+*{
+  margin: 0%;
+  padding: 0%;
+}
+header{
+  font-size: xx-large;
+  font-weight: 800;
+  text-align: center;
+  color: red;
+  background-color: black;
+}
+footer{
+    font-size: small;
+      font-weight: 800;
+      text-align: center;
+      color: rgb(246, 201, 201);
+      background-color: rgb(26, 1, 1);
+      padding: 25px 25px 25px 25px;
+}
+
+#left :hover {
+  padding: 2px;
+  border: 20px;
+  border-radius: 20px;
+  color: black;
+  background-color: rgb(203, 251, 81);
+}
+
+a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: medium;
+  font-weight: 800;
+}
+
+#left {
+  background-color:rgb(18, 0, 18);
+  width: 15%;
+  float: left;
+  height: 100vh;
+}
+
+#right {
+  background-color: rgb(36, 47, 18);
+  width: 85%;
+  float: right;
+  height: 100vh;
+}

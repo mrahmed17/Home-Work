@@ -1,0 +1,26 @@
+h1{
+  color: brown;
+  text-align: center;
+  font-weight: bold;
+}
+
+table{
+  border: solid tomato 2px;
+  background-color: azure;
+  border-radius: 15px;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th{
+  font: 600;
+  font-size: x-large;
+  color: blue;
+  text-align: center;
+}
+td{
+  font: 200;
+  font-size: large;
+  text-align: center;
+  color: tomato;
+}
