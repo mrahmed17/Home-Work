@@ -22,7 +22,7 @@
 
         <div class="mb-3">
           <label for="" class="form-label">Contact: </label>
-          <input type="number" class="form-control" id="contact" />
+          <input type="text" class="form-control" id="contact" />
         </div>
 
         <div class="form-floating">
@@ -30,9 +30,67 @@
           <label for="">Remarks</label>
         </div>
 
-        <div class="col-md-6 mb-3"></div>
+        <div class="col-md-6 mb-3">
+          <label for="">Gender: </label>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="gender"
+            value="Male"
+          />Male
+          <input
+            class="form-check-input"
+            type="radio"
+            name="gender"
+            value="Female"
+          />Female
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="">Course</label>
+          <input
+            type="checkbox"
+            class="form-check-input"
+            name="course"
+            value="NT"
+          />NT
+          <input
+            type="checkbox"
+            class="form-check-input"
+            name="course"
+            value="IAD"
+          />IAD
+          <input
+            type="checkbox"
+            class="form-check-input"
+            name="course"
+            value="DDD"
+          />DDD
+          <input
+            type="checkbox"
+            class="form-check-input"
+            name="course"
+            value="ESAD"
+          />ESAD
+        </div>
+        <br />
+
+        <div class="col-md-6 mb-3">
+          <label for="">Location:</label>
+          <select name="location" id="location">
+            <option value="Select Any">Select Any</option>
+            <option value="Banani">Banani</option>
+            <option value="Dhanmondi">Dhanmondi</option>
+            <option value="Mirpur">Mirpur</option>
+          </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <button class="btn btn-success" value="Submit">Submit</button>
+        </div>
       </form>
     </div>
+
     <script></script>
 
     <script
