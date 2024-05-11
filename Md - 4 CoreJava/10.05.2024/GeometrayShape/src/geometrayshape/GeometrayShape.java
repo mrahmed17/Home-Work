@@ -13,6 +13,7 @@ public class GeometrayShape {
         System.out.println("Circle Area: " + circle.getArea());
     
         Rectangle rectangle= new Rectangle(4.0, 6.0);
+        
         System.out.println("Rectangle Perimeter: " + rectangle.getPerimeter());
         System.out.println("Rectangle Area: " + rectangle.getArea());
         
@@ -22,5 +23,8 @@ public class GeometrayShape {
         System.out.println("Triangle Area: "+ triangle.getArea());  
         
     }
+    
+    
+    
 
 }
