@@ -1,19 +1,17 @@
-
 package sports;
 
-public class Basketball extends Sports{
+public class Basketball extends Sports {
+
+    public Basketball() {
+    }
 
     @Override
     public void play() {
+        System.out.println(" a basketball game.");
         
-        System.out.println("");
-        public void play; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-    
+        super.play(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
 
-
-
-}
-    
     
     
 }
