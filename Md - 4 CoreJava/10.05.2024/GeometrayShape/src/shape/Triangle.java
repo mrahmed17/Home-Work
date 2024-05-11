@@ -51,8 +51,6 @@ public class Triangle extends Shape{
         return side1+side2+side3;
 //        return super.getPerimeter(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
-    
-    
-    
+          
     
 }
