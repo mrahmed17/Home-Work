@@ -1,0 +1,26 @@
+Problem:1
+Write a Java program to create a class Shape with methods getArea() and getPerimeter().
+
+Create three subclasses: Circle, Rectangle, and Triangle.
+Override the getArea() and getPerimeter() methods in each subclass to calculate and return the area and perimeter of the respective shapes.
+
+Ans:
+https://www.w3resource.com/java-exercises/java-interface-exercise-1.php
+
+https://www.w3resource.com/java-exercises/java-inheritance-exercise-8.php4
+
+https://interviewsansar.com/shape-interface-implementation-java-exercise/
+
+https://www.chegg.com/homework-help/questions-and-answers/1-write-java-program-create-class-called-shape-h-methods-called-getperimeter-getarea--appl-q119180274
+
+
+
+Problem:2
+Write a Java program to create a base class Sports with a method called play(). Create
+three subclasses: Football, Basketball, and Rugby. Override the play() method in each
+subclass to play a specific statement for each sport.
+
+Problem:3
+Write a Java program to create a base class Vehicle with methods startEngine() and
+stopEngine(). Create two subclasses Car and Motorcycle. Override the startEngine() and
+stopEngine() methods in each subclass to start and stop the engines differently.
