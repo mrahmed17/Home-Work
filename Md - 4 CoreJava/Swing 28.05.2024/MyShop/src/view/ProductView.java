@@ -4,9 +4,14 @@
  */
 package view;
 
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -20,6 +25,8 @@ import util.DbUtil;
 public class ProductView extends javax.swing.JFrame {
 
     DbUtil db = new DbUtil();
+    PreparedStatement ps;
+    ResultSet rs;
 
     /**
      * Creates new form ProductView
@@ -27,14 +34,88 @@ public class ProductView extends javax.swing.JFrame {
     public ProductView() {
         initComponents();
         showProductOnTable();
+        showProductToCombo();
+        showStockOnTable();
+        comProductName.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                getProductSalesPrice(e);
+            }
+
+        });
+    }
+
+    public boolean getStocProductList() {
+        String sql = "select name from stock";
+        boolean status = false;
+        String purchaseProductName = txtName.getText().trim();
+
+        try {
+            ps = db.getCon().prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String productName = rs.getString("name");
+                if (productName.equalsIgnoreCase(purchaseProductName)) {
+                    status = true;
+                    break;
+                }
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return status;
+    }
+
+    public void addProdductToStock() {
+
+        boolean status = getStocProductList();
+
+        if (status) {
+            String sql = "update stock set quantity=quantity+? where name=?";
+            try {
+                ps = db.getCon().prepareStatement(sql);
+
+                ps.setFloat(1, Float.parseFloat(txtQuantity.getText().trim()));
+                ps.setString(2, txtName.getText().trim());
+
+                ps.executeUpdate();
+
+                ps.close();
+                db.getCon().close();
+
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } else {
+
+            String sql = "insert into stock(name,purcahsePrice,quantity) values (?,?,?)";
+
+            try {
+                ps = db.getCon().prepareStatement(sql);
+
+                ps.setString(1, txtName.getText().trim());
+                ps.setFloat(2, Float.parseFloat(txtUnitPrice.getText().trim()));
+                ps.setFloat(3, Float.parseFloat(txtQuantity.getText().trim()));
+
+                ps.executeUpdate();
+
+                ps.close();
+                db.getCon().close();
+
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
 
     }
 
     public void addProduct() {
 
         String sql = "insert into product(name,unitPrice,quantity,totalPrice,salesPrice) values(?,?,?,?,?)";
-
-        PreparedStatement ps;
         try {
             ps = db.getCon().prepareStatement(sql);
 
@@ -52,14 +133,13 @@ public class ProductView extends javax.swing.JFrame {
             clear();
             showProductOnTable();
 
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Add Product Unsuccessfully");
-            Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(this, "Add Product Unsuccessfully");
             Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Add Product unsuccessfully");
+            Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     public void getTotalPrice() {
@@ -83,12 +163,12 @@ public class ProductView extends javax.swing.JFrame {
     }
 
     String[] productViewTableColumn = {"id", "Name", "Unit Price", "Quantity", "Total Price", "Sales Price"};
+    String[] stockViewTableColumn = {"id", "Name", "Qunatity", "Unit Price"};
 
     public void showProductOnTable() {
 
         String sql = "select * from product";
         PreparedStatement ps;
-
         ResultSet rs;
 
         DefaultTableModel model = new DefaultTableModel();
@@ -118,10 +198,45 @@ public class ProductView extends javax.swing.JFrame {
         }
     }
 
+    public void showStockOnTable() {
+
+        String sql = "select * from stock";
+        PreparedStatement ps;
+        ResultSet rs;
+
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(stockViewTableColumn);
+
+        tblStock.setModel(model);
+
+        try {
+            ps = db.getCon().prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                float quantity = rs.getFloat("quantity");
+                float unitPrice = rs.getFloat("purcahsePrice");
+
+                model.addRow(new Object[]{id, name, unitPrice, quantity});
+
+            }
+
+            rs.close();
+            ps.close();
+            db.getCon();
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
     public void deleteProduct() {
 
         String sql = "delete from product where id =?";
-        PreparedStatement ps;
         try {
             ps = (PreparedStatement) db.getCon().prepareStatement(sql);
             ps.setInt(1, Integer.parseInt(txtID.getText()));
@@ -146,7 +261,6 @@ public class ProductView extends javax.swing.JFrame {
     public void editProduct() {
 
         String sql = "update product set name=?, unitPrice=?, quantity=?, totalPrice=?, salesPrice=? where id =?";
-        PreparedStatement ps;
         try {
             ps = (PreparedStatement) db.getCon().prepareStatement(sql);
 
@@ -165,11 +279,182 @@ public class ProductView extends javax.swing.JFrame {
             clear();
             showProductOnTable();
 
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             JOptionPane.showMessageDialog(this, "Update Product Unsuccessfully");
             Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void showProductToCombo() {
+        String sql = "select name from product";
+        PreparedStatement ps;
+        ResultSet rs;
+
+        comProductName.removeAllItems();
+
+        try {
+            ps = db.getCon().prepareStatement(sql);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String productName = rs.getString("name");
+                comProductName.addItem(productName);
+            }
+
+            ps.close();
+            db.getCon().close();
+            rs.close();
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Update Product Unsuccessfully");
+            Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void getProductSalesPrice(ItemEvent e) {
+
+        String selectedProductName = "";
+
+        if (e.getStateChange() == ItemEvent.SELECTED) {
+            selectedProductName = (String) e.getItem();
+            //TODO your actitons
+            extractSalesPrice(selectedProductName);
+        }
+
+        String sql = "Select quantity from stock where name=?";
+
+        try {
+            ps = db.getCon().prepareStatement(sql);
+            ps.setString(1, selectedProductName);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                float quantity = rs.getFloat("quantity");
+                lblStock.setText(quantity + "");
+
+            }
+
+            ps.close();
+            db.getCon().close();
+            rs.close();
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void extractSalesPrice(String productName) {
+
+        String sql = "select salesPrice from product where name=?";
+        PreparedStatement ps;
+        ResultSet rs;
+
+        try {
+            ps = db.getCon().prepareStatement(sql);
+            ps.setString(1, productName);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String salesPrice = rs.getString("salesPrice");
+                txtSalesUnitPrice.setText(salesPrice);
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void getTotalSalesPrice() {
+
+        float quantity = Float.parseFloat(txtSalesQunatity.getText().toString().trim());
+        float unitPrice = Float.parseFloat(txtSalesUnitPrice.getText().toString().trim());
+        float salesTotalPrice = quantity * unitPrice;
+        txtSalesTotalPrice.setText(salesTotalPrice + "");
+
+    }
+
+    public String formatDateToDDMMYYYY(Date date) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        return dateFormat.format(date);
+    }
+
+    public static java.sql.Date convertUtilDateToSqlDate(java.util.Date utilDate) {
+        if (utilDate != null) {
+            return new java.sql.Date(utilDate.getTime());
+        }
+        return null;
+    }
+
+    public static java.sql.Date convertStringToSqlDate(String dateString) {
+        SimpleDateFormat inputFormat = new SimpleDateFormat("MM-dd-yyyy");
+        try {
+            java.util.Date utilDate = inputFormat.parse(dateString);
+
+            // Convert to "yyyy-MM-dd" format
+            SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String formattedDate = outputFormat.format(utilDate);
+
+            return java.sql.Date.valueOf(formattedDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null; // Return null or handle the error as needed
+        }
+    }
+
+    public void stockUpdateOnSales() {
+        String sql = "update stock set quantity=quantity-? where name=?";
+
+        try {
+            ps = db.getCon().prepareStatement(sql);
+
+            ps.setFloat(1, Float.parseFloat(txtSalesQunatity.getText().trim()));
+            ps.setString(2, comProductName.getSelectedItem().toString());
+
+            ps.executeUpdate();
+
+            ps.close();
+            db.getCon().close();
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void addSales() {
+
+        Date date = convertUtilDateToSqlDate(salesDate.getDate());
+
+        PreparedStatement ps;
+        String sql = "insert into sales(name, salesUnitPrice,salesQuantity,salesTotalPrice,salesDate) "
+                + "values(?,?,?,?,?)";
+
+        try {
+            ps = db.getCon().prepareStatement(sql);
+            ps.setString(1, comProductName.getSelectedItem().toString());
+            ps.setFloat(2, Float.parseFloat(txtSalesUnitPrice.getText()));
+            ps.setFloat(3, Float.parseFloat(txtSalesQunatity.getText()));
+            ps.setFloat(4, Float.parseFloat(txtSalesTotalPrice.getText()));
+            ps.setDate(5, convertUtilDateToSqlDate(date));
+
+            ps.executeUpdate();
+
+            ps.close();
+            db.getCon().close();
+
+            JOptionPane.showMessageDialog(this, "Add Sales Successfully");
+            stockUpdateOnSales();
+            showStockOnTable();
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Add Sales Unsuccessfully");
             Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -217,7 +502,7 @@ public class ProductView extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comProductName = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
@@ -229,6 +514,7 @@ public class ProductView extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         Stock = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
@@ -391,10 +677,10 @@ public class ProductView extends javax.swing.JFrame {
                                 .addGap(12, 12, 12)
                                 .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(AddLayout.createSequentialGroup()
-                                .addGroup(AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtSalesPrice, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(12, 12, 12)
+                                .addGroup(AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
+                                    .addComponent(txtSalesPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
                                 .addGroup(AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txySalesPrice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -403,13 +689,10 @@ public class ProductView extends javax.swing.JFrame {
                         .addGroup(AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnProductAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnProductReset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(AddLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(btnProductDetele))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(btnProductEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(18, 18, 18)
+                        .addGroup(AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnProductDetele)
+                            .addComponent(btnProductEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -437,9 +720,9 @@ public class ProductView extends javax.swing.JFrame {
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtTotalPrice, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txySalesPrice)
@@ -452,7 +735,7 @@ public class ProductView extends javax.swing.JFrame {
                         .addGroup(AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnProductReset)
                             .addComponent(btnProductDetele))
-                        .addContainerGap(47, Short.MAX_VALUE))
+                        .addContainerGap(39, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
         );
 
@@ -469,7 +752,12 @@ public class ProductView extends javax.swing.JFrame {
 
         jLabel12.setText("Name");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comProductName.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comProductName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                comProductNameMouseClicked(evt);
+            }
+        });
 
         jLabel13.setText("Quantity");
 
@@ -514,7 +802,7 @@ public class ProductView extends javax.swing.JFrame {
                     .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(comProductName, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(SalesLayout.createSequentialGroup()
@@ -528,8 +816,10 @@ public class ProductView extends javax.swing.JFrame {
                             .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(77, 77, 77))
                     .addGroup(SalesLayout.createSequentialGroup()
-                        .addGap(114, 114, 114)
+                        .addGap(101, 101, 101)
                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -538,10 +828,12 @@ public class ProductView extends javax.swing.JFrame {
             .addGroup(SalesLayout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53)
-                .addGroup(SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14))
+                .addGroup(SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comProductName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel14))
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(SalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -558,7 +850,7 @@ public class ProductView extends javax.swing.JFrame {
                     .addComponent(jLabel16)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
-                .addGap(0, 118, Short.MAX_VALUE))
+                .addGap(0, 115, Short.MAX_VALUE))
         );
 
         MainView.addTab("Sales", Sales);
@@ -582,7 +874,7 @@ public class ProductView extends javax.swing.JFrame {
             StockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(StockLayout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 340, Short.MAX_VALUE))
+                .addGap(0, 341, Short.MAX_VALUE))
         );
 
         MainView.addTab("Stock", Stock);
@@ -608,7 +900,7 @@ public class ProductView extends javax.swing.JFrame {
             ReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ReportLayout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 339, Short.MAX_VALUE))
+                .addGap(0, 340, Short.MAX_VALUE))
         );
 
         MainView.addTab("Report", Report);
@@ -623,12 +915,15 @@ public class ProductView extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         MainView.setSelectedIndex(0);
+        
     }//GEN-LAST:event_btnAddProductMouseClicked
 
     private void btnSalesProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalesProductMouseClicked
         // TODO add your handling code here:
 
         MainView.setSelectedIndex(1);
+        showProductToCombo();
+        
     }//GEN-LAST:event_btnSalesProductMouseClicked
 
     private void btnStocksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStocksMouseClicked
@@ -700,6 +995,11 @@ public class ProductView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void comProductNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comProductNameMouseClicked
+        // TODO add your handling code here:
+        getProductSalesPrice();
+    }//GEN-LAST:event_comProductNameMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -749,11 +1049,12 @@ public class ProductView extends javax.swing.JFrame {
     private javax.swing.JButton btnReport;
     private javax.swing.JButton btnSalesProduct;
     private javax.swing.JButton btnStocks;
+    private javax.swing.JComboBox<String> comProductName;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
