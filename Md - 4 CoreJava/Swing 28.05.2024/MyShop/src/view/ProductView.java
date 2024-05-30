@@ -52,10 +52,7 @@ public class ProductView extends javax.swing.JFrame {
             clear();
             showProductOnTable();
 
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Add Product Unsuccessfully");
-            Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             JOptionPane.showMessageDialog(this, "Add Product Unsuccessfully");
             Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -134,13 +131,10 @@ public class ProductView extends javax.swing.JFrame {
             clear();
             showProductOnTable();
 
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             JOptionPane.showMessageDialog(this, "Detete Product Unsuccessfully");
             Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Detete Product Unsuccessfully");
-            Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
     }
 
     public void editProduct() {
@@ -165,10 +159,7 @@ public class ProductView extends javax.swing.JFrame {
             clear();
             showProductOnTable();
 
-        } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(this, "Update Product Unsuccessfully");
-            Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             JOptionPane.showMessageDialog(this, "Update Product Unsuccessfully");
             Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
         }
