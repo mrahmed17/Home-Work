@@ -16,7 +16,7 @@ public class DbUtil {
     
     
     
-    public Connection getCon() throws ClassNotFoundException{
+    public Connection getCon() throws ClassNotFoundException {
     
         Class.forName(driver);
         try {
