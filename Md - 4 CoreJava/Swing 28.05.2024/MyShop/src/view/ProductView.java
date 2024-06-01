@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package view;
 
 import java.awt.event.ItemEvent;
@@ -40,11 +44,10 @@ public class ProductView extends javax.swing.JFrame {
         comProductName.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
-                getProductSalesPrice(e);
+               getProductSalesPrice(e);
             }
 
-        }
-        );
+        });
 
     }
 
@@ -127,7 +130,7 @@ public class ProductView extends javax.swing.JFrame {
 
             ps.setDate(1, convertUtilDateToSqlDate(fromDate));
             ps.setDate(2, convertUtilDateToSqlDate(toDate));
- 
+
             rs = ps.executeQuery();
 
             float totalPurchasePrice = 0;
@@ -264,7 +267,7 @@ public class ProductView extends javax.swing.JFrame {
 
     public void addProdductToStock() {
 
-        boolean status = getStocProductList();
+        boolean status = getStockProductList();
 
         if (status) {
             String sql = "update stock set quantity=quantity+? where name=?";
@@ -426,12 +429,9 @@ public class ProductView extends javax.swing.JFrame {
             ps.close();
             db.getCon();
 
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        } 
     }
 
     public void deleteProduct() {
@@ -504,34 +504,18 @@ public class ProductView extends javax.swing.JFrame {
             db.getCon().close();
             rs.close();
 
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        try {
-            ps = db.getCon().prepareStatement(sql);
-            ps.setString(1, productName);
-
-            rs = ps.executeQuery();
-
-            while (rs.next()) {
-                String salesPrice = rs.getString("salesPrice");
-                txtSalesUnitPrice.setText(salesPrice);
-            }
-
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
 
+        
     public void getProductSalesPrice(ItemEvent e) {
 
         String selectedProductName = "";
 
         if (e.getStateChange() == ItemEvent.SELECTED) {
             selectedProductName = (String) e.getItem();
+            
             //TODO your actitons
             extractSalesPrice(selectedProductName);
         }
@@ -546,13 +530,13 @@ public class ProductView extends javax.swing.JFrame {
 
             while (rs.next()) {
                 float quantity = rs.getFloat("quantity");
-                Sales.setText(quantity + "");
+                lblStock.setText(quantity + "");
 
             }
 
             ps.close();
-            rs.close();
             db.getCon().close();
+            rs.close();
 
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
@@ -742,7 +726,7 @@ public class ProductView extends javax.swing.JFrame {
         dateToReport = new com.toedter.calendar.JDateChooser();
         btnReportPurchase = new javax.swing.JButton();
         btnReportSales = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnReportGrossProfit = new javax.swing.JButton();
         btnReportReset = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblReports = new javax.swing.JTable();
@@ -1200,10 +1184,20 @@ public class ProductView extends javax.swing.JFrame {
         Reports.add(btnReportPurchase, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
         btnReportSales.setText("Sales");
+        btnReportSales.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReportSalesMouseClicked(evt);
+            }
+        });
         Reports.add(btnReportSales, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, -1, -1));
 
-        jButton4.setText("Gross Profit");
-        Reports.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 110, -1));
+        btnReportGrossProfit.setText("Gross Profit");
+        btnReportGrossProfit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReportGrossProfitMouseClicked(evt);
+            }
+        });
+        Reports.add(btnReportGrossProfit, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 110, -1));
 
         btnReportReset.setText("Reset");
         Reports.add(btnReportReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, -1, -1));
@@ -1333,9 +1327,7 @@ public class ProductView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalesSaveActionPerformed
 
     private void comProductNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comProductNameMouseClicked
-        // TODO add your handling code here:
-        getProductSalesPrice(e);
-
+        // TODO add your handling code here: 
     }//GEN-LAST:event_comProductNameMouseClicked
 
     private void txtSalesQuantityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSalesQuantityFocusLost
@@ -1356,6 +1348,16 @@ public class ProductView extends javax.swing.JFrame {
         getPurchaseReport();
 
     }//GEN-LAST:event_btnReportPurchaseMouseClicked
+
+    private void btnReportGrossProfitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportGrossProfitMouseClicked
+        // TODO add your handling code here:
+        getGrossProfit();
+    }//GEN-LAST:event_btnReportGrossProfitMouseClicked
+
+    private void btnReportSalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportSalesMouseClicked
+        // TODO add your handling code here:
+         getSalesReport();
+    }//GEN-LAST:event_btnReportSalesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1414,6 +1416,7 @@ public class ProductView extends javax.swing.JFrame {
     private javax.swing.JButton btnProductEdit;
     private javax.swing.JButton btnProductReset;
     private javax.swing.JButton btnReport;
+    private javax.swing.JButton btnReportGrossProfit;
     private javax.swing.JButton btnReportPurchase;
     private javax.swing.JButton btnReportReset;
     private javax.swing.JButton btnReportSales;
@@ -1426,7 +1429,6 @@ public class ProductView extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dateFromReport;
     private com.toedter.calendar.JDateChooser dateToReport;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
