@@ -1276,14 +1276,16 @@ public class ProductView extends javax.swing.JFrame {
 
         lblProfit.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblProfit.setForeground(new java.awt.Color(255, 255, 255));
-        lblProfit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblProfit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblProfit.setText("Profit:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblProfit, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblProfit, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1322,6 +1324,7 @@ public class ProductView extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         MainView.setSelectedIndex(3);
+       resetRepot();
     }//GEN-LAST:event_btnReportMouseClicked
 
     private void btnProductAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductAddMouseClicked
