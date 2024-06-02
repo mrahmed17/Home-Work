@@ -258,7 +258,7 @@ public class ProductView extends javax.swing.JFrame {
                     break;
                 }
             }
-            
+
             ps.close();
             db.getCon().close();
             rs.close();
@@ -486,25 +486,49 @@ public class ProductView extends javax.swing.JFrame {
     }
 
     public void showProductToCombo() {
-        String sql = "select name from product";
+//        String sql = "select name from product";
+//
+//        comProductName.removeAllItems();
+//
+//        try {
+//            ps = db.getCon().prepareStatement(sql);
+//
+//            rs = ps.executeQuery();
+//
+//            while (rs.next()) {
+//                String productName = rs.getString("name");
+//                comProductName.addItem(productName);
+//            }
+//
+//            ps.close();
+//
+//            db.getCon().close();
+//            rs.close();
+//
+//        } catch (ClassNotFoundException | SQLException ex) {
+//            Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+
+ String sql = "select name from product";
+        PreparedStatement ps;
+        ResultSet rs;
 
         comProductName.removeAllItems();
 
         try {
             ps = db.getCon().prepareStatement(sql);
-
             rs = ps.executeQuery();
 
             while (rs.next()) {
                 String productName = rs.getString("name");
                 comProductName.addItem(productName);
             }
-
             ps.close();
+            db.getCon();
             rs.close();
-            db.getCon().close();
-
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
             Logger.getLogger(ProductView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -558,8 +582,8 @@ public class ProductView extends javax.swing.JFrame {
                 String salesPrice = rs.getString("salesPrice");
                 txtSalesUnitPrice.setText(salesPrice);
             }
-            
-             ps.close();
+
+            ps.close();
             db.getCon().close();
             rs.close();
 
