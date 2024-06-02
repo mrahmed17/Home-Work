@@ -19,10 +19,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import util.DbUtil;
 
-/**
- *
- * @author Magic Box
- */
 public class ProductView extends javax.swing.JFrame {
 
     DbUtil db = new DbUtil();
@@ -352,6 +348,7 @@ public class ProductView extends javax.swing.JFrame {
         txtQuantity.setText("");
         txtTotalPrice.setText("");
         txtSalesPrice.setText("");
+         btnAddProduct.setVisible(true);
 
     }
 
@@ -436,6 +433,7 @@ public class ProductView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Product Detete Successfully");
             clear();
             showProductOnTable();
+            btnAddProduct.setVisible(true);
 
         } catch (ClassNotFoundException | SQLException ex) {
             JOptionPane.showMessageDialog(this, "Product Detete Unsuccessfully");
@@ -463,6 +461,7 @@ public class ProductView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Product Update Successfully");
             clear();
             showProductOnTable();
+            btnAddProduct.setVisible(true);
 
         } catch (ClassNotFoundException | SQLException ex) {
             JOptionPane.showMessageDialog(this, "Product Update Unsuccessfully");
@@ -1318,6 +1317,8 @@ public class ProductView extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         MainView.setSelectedIndex(2);
+        getStockProductList();
+        
     }//GEN-LAST:event_btnStockMouseClicked
 
     private void btnReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportMouseClicked
@@ -1342,10 +1343,13 @@ public class ProductView extends javax.swing.JFrame {
     private void btnProductResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductResetMouseClicked
         // TODO add your handling code here:
         clear();
+       
     }//GEN-LAST:event_btnProductResetMouseClicked
 
     private void tblProductViewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProductViewMouseClicked
         // TODO add your handling code here:
+        
+        btnProductAdd.setVisible(false);
 
         int rowIndex = tblProductView.getSelectedRow();
 
@@ -1363,6 +1367,7 @@ public class ProductView extends javax.swing.JFrame {
         txtTotalPrice.setText(totalPrice);
         txtSalesPrice.setText(salesPrice);
 
+         
     }//GEN-LAST:event_tblProductViewMouseClicked
 
     private void btnProductDeteleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductDeteleMouseClicked
