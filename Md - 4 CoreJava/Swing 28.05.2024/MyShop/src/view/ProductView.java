@@ -1303,6 +1303,7 @@ public class ProductView extends javax.swing.JFrame {
 
         MainView.setSelectedIndex(2);
         getStockProductList();
+        showStockOnTable();
         
     }//GEN-LAST:event_btnStockMouseClicked
 
