@@ -22,14 +22,14 @@ public class LogInWindow extends javax.swing.JFrame {
     public void getLogIn() {
         if (txtUserName.getText().equals("")) {
 
-            JOptionPane.showMessageDialog(rootPane, "Enter username");
+            JOptionPane.showMessageDialog(rootPane, "Enter username", "massage", JOptionPane.ERROR_MESSAGE);
 
         } else if (txtPassword.getText().equals("")) {
 
-            JOptionPane.showMessageDialog(rootPane, "Enter password");
+            JOptionPane.showMessageDialog(rootPane, "Enter password", "massage", JOptionPane.ERROR_MESSAGE);
 
         } else if (txtUserName.getText().equalsIgnoreCase("Admin") && txtPassword.getText().equals("1234")) {
-            JOptionPane.showMessageDialog(rootPane, "Welcome To Ahmed Academy");
+            JOptionPane.showMessageDialog(rootPane, "Welcome to Ahmed Academy");
             ProductView productView = new ProductView();
             this.setVisible(false);
             productView.setVisible(true);
@@ -48,15 +48,15 @@ public class LogInWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel4 = new javax.swing.JLabel();
-        txtUserName = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        chkBoxShowPassword = new javax.swing.JCheckBox();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtUserName = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
+        chkBoxShowPassword = new javax.swing.JCheckBox();
         btnSignIn = new javax.swing.JButton();
         btnLogIn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         btnExit = new javax.swing.JButton();
@@ -65,27 +65,41 @@ public class LogInWindow extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("System Login Panel");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 380, 60));
-
-        txtUserName.setBackground(new java.awt.Color(0, 0, 0));
-        txtUserName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtUserName.setForeground(new java.awt.Color(255, 255, 255));
-        txtUserName.setBorder(null);
-        getContentPane().add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 196, 150, 30));
-
-        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(0, 51, 51));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.setName("0,0,0,80");
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        chkBoxShowPassword.setBackground(new java.awt.Color(0, 0, 0));
-        chkBoxShowPassword.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("System Login Panel");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 450, 60));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/User.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, -1, -1));
+
+        txtUserName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtUserName.setForeground(new java.awt.Color(0, 0, 0));
+        txtUserName.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 196, 150, 30));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Password.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, -1, -1));
+
+        txtPassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtPassword.setForeground(new java.awt.Color(0, 0, 0));
+        txtPassword.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 150, 30));
+
+        chkBoxShowPassword.setBackground(new java.awt.Color(0, 102, 102));
         chkBoxShowPassword.setForeground(new java.awt.Color(255, 255, 255));
         chkBoxShowPassword.setText("Show Password");
+        chkBoxShowPassword.setBorder(null);
         chkBoxShowPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         chkBoxShowPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,16 +108,11 @@ public class LogInWindow extends javax.swing.JFrame {
         });
         jPanel1.add(chkBoxShowPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 120, -1));
 
-        txtPassword.setBackground(new java.awt.Color(0, 0, 0));
-        txtPassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtPassword.setForeground(new java.awt.Color(255, 255, 255));
-        txtPassword.setBorder(null);
-        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 150, 30));
-
         btnSignIn.setBackground(new java.awt.Color(0, 102, 0));
         btnSignIn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSignIn.setForeground(new java.awt.Color(255, 255, 255));
         btnSignIn.setText("Sign In");
+        btnSignIn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSignIn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSignIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,10 +121,11 @@ public class LogInWindow extends javax.swing.JFrame {
         });
         jPanel1.add(btnSignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, -1, -1));
 
-        btnLogIn.setBackground(new java.awt.Color(0, 153, 153));
+        btnLogIn.setBackground(new java.awt.Color(255, 102, 0));
         btnLogIn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnLogIn.setForeground(new java.awt.Color(255, 255, 255));
         btnLogIn.setText("Log In");
+        btnLogIn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnLogIn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,37 +134,27 @@ public class LogInWindow extends javax.swing.JFrame {
         });
         jPanel1.add(btnLogIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/User.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, -1, -1));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Password.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, -1, -1));
-
-        jPanel2.setBackground(new java.awt.Color(153, 0, 0));
-        jPanel2.setForeground(new java.awt.Color(255, 51, 0));
+        jPanel2.setBackground(new java.awt.Color(51, 0, 51));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Reflection.png"))); // NOI18N
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 100, 100));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 100, 100));
 
-        btnExit.setBackground(new java.awt.Color(153, 0, 0));
+        btnExit.setBackground(new java.awt.Color(204, 0, 0));
         btnExit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnExit.setForeground(new java.awt.Color(0, 0, 0));
+        btnExit.setForeground(new java.awt.Color(255, 255, 255));
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Power Off Button.png"))); // NOI18N
-        btnExit.setBorder(null);
+        btnExit.setText("Exit");
+        btnExit.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
             }
         });
-        jPanel2.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 380, 40, 30));
+        jPanel2.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 70, 30));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 260, 420));
 
@@ -185,7 +185,6 @@ public class LogInWindow extends javax.swing.JFrame {
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
-
         System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
 

@@ -701,12 +701,17 @@ public class ProductView extends javax.swing.JFrame {
     private void initComponents() {
 
         Banner = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         Menu = new javax.swing.JPanel();
         btnAddProduct = new javax.swing.JButton();
         btnSalesProduct = new javax.swing.JButton();
         btnStock = new javax.swing.JButton();
         btnReport = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
         MainView = new javax.swing.JTabbedPane();
         Add = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -724,9 +729,9 @@ public class ProductView extends javax.swing.JFrame {
         txtTotalPrice = new javax.swing.JTextField();
         txtSalesPrice = new javax.swing.JTextField();
         btnProductAdd = new javax.swing.JButton();
-        btnProductDetele = new javax.swing.JButton();
         btnProductEdit = new javax.swing.JButton();
         btnProductReset = new javax.swing.JButton();
+        btnProductDetele = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProductView = new javax.swing.JTable();
         Sales = new javax.swing.JPanel();
@@ -774,24 +779,37 @@ public class ProductView extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Banner.setBackground(new java.awt.Color(0, 51, 51));
+        Banner.setBackground(new java.awt.Color(0, 153, 153));
         Banner.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Tree Planting.png"))); // NOI18N
+        Banner.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 80, 80));
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Text Color.png"))); // NOI18N
+        Banner.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(396, 0, -1, 80));
+
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Text Color.png"))); // NOI18N
+        Banner.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 70, 80));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Ahmed Academy");
+        jLabel1.setText("hmed        cademy");
         Banner.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 100));
+
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Reflection.png"))); // NOI18N
+        Banner.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, 80, 80));
 
         getContentPane().add(Banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, -1));
 
-        Menu.setBackground(new java.awt.Color(0, 0, 0));
+        Menu.setBackground(new java.awt.Color(0, 153, 153));
         Menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnAddProduct.setBackground(new java.awt.Color(0, 102, 153));
         btnAddProduct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAddProduct.setForeground(new java.awt.Color(255, 255, 255));
         btnAddProduct.setText("Add Product");
+        btnAddProduct.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAddProduct.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAddProductMouseClicked(evt);
@@ -803,6 +821,7 @@ public class ProductView extends javax.swing.JFrame {
         btnSalesProduct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSalesProduct.setForeground(new java.awt.Color(255, 255, 255));
         btnSalesProduct.setText("Sales Product");
+        btnSalesProduct.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalesProduct.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSalesProductMouseClicked(evt);
@@ -814,6 +833,7 @@ public class ProductView extends javax.swing.JFrame {
         btnStock.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnStock.setForeground(new java.awt.Color(255, 255, 255));
         btnStock.setText("Stock");
+        btnStock.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnStock.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnStockMouseClicked(evt);
@@ -825,6 +845,7 @@ public class ProductView extends javax.swing.JFrame {
         btnReport.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnReport.setForeground(new java.awt.Color(255, 255, 255));
         btnReport.setText("Report");
+        btnReport.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnReport.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnReportMouseClicked(evt);
@@ -832,64 +853,77 @@ public class ProductView extends javax.swing.JFrame {
         });
         Menu.add(btnReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 110, -1));
 
+        btnExit.setBackground(new java.awt.Color(204, 0, 0));
+        btnExit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnExit.setForeground(new java.awt.Color(255, 255, 255));
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Power Off Button.png"))); // NOI18N
+        btnExit.setText("Exit");
+        btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+        Menu.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, 30));
+
         getContentPane().add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 130, 400));
 
         Add.setPreferredSize(new java.awt.Dimension(700, 400));
         Add.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(102, 0, 0));
+        jPanel3.setBackground(new java.awt.Color(0, 0, 51));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Add Product");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 60));
+        jLabel2.setText("Purchase Product");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 60));
 
         Add.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("ID");
-        Add.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 66, 72, 20));
+        Add.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, 72, 20));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Name");
-        Add.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 100, 49, 20));
+        Add.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, 49, 20));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Unit Price");
-        Add.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 140, 63, 20));
+        Add.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, 63, 20));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Quantity");
-        Add.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 174, 63, 20));
+        Add.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 63, 20));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Total Price");
-        Add.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 208, 63, 23));
+        Add.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 63, 23));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Sales Price");
-        Add.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 248, 63, 22));
+        Add.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 63, 22));
 
         txtId.setEditable(false);
         txtId.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtId.setForeground(new java.awt.Color(0, 0, 0));
-        Add.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 66, 130, -1));
+        Add.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 130, -1));
 
         txtName.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtName.setForeground(new java.awt.Color(0, 0, 0));
-        Add.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 100, 130, -1));
+        Add.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, 130, -1));
 
         txtUnitPrice.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtUnitPrice.setForeground(new java.awt.Color(0, 0, 0));
-        Add.add(txtUnitPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 140, 130, -1));
+        Add.add(txtUnitPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, 130, -1));
 
         txtQuantity.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtQuantity.setForeground(new java.awt.Color(0, 0, 0));
@@ -898,62 +932,65 @@ public class ProductView extends javax.swing.JFrame {
                 txtQuantityFocusLost(evt);
             }
         });
-        Add.add(txtQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 174, 130, -1));
+        Add.add(txtQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 180, 130, -1));
 
         txtTotalPrice.setEditable(false);
         txtTotalPrice.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtTotalPrice.setForeground(new java.awt.Color(0, 0, 0));
-        Add.add(txtTotalPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 208, 130, 23));
+        Add.add(txtTotalPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 220, 130, 23));
 
         txtSalesPrice.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtSalesPrice.setForeground(new java.awt.Color(0, 0, 0));
-        Add.add(txtSalesPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 248, 130, -1));
+        Add.add(txtSalesPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, 130, -1));
 
         btnProductAdd.setBackground(new java.awt.Color(0, 102, 153));
         btnProductAdd.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnProductAdd.setForeground(new java.awt.Color(255, 255, 255));
         btnProductAdd.setText("Add");
+        btnProductAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProductAdd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnProductAddMouseClicked(evt);
             }
         });
-        Add.add(btnProductAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 288, -1, -1));
-
-        btnProductDetele.setBackground(new java.awt.Color(153, 0, 0));
-        btnProductDetele.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnProductDetele.setForeground(new java.awt.Color(255, 255, 255));
-        btnProductDetele.setText("Delete");
-        btnProductDetele.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnProductDeteleMouseClicked(evt);
-            }
-        });
-        Add.add(btnProductDetele, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 329, -1, -1));
+        Add.add(btnProductAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, 80, -1));
 
         btnProductEdit.setBackground(new java.awt.Color(0, 102, 51));
         btnProductEdit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnProductEdit.setForeground(new java.awt.Color(255, 255, 255));
         btnProductEdit.setText("Edit");
+        btnProductEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProductEdit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnProductEditMouseClicked(evt);
             }
         });
-        Add.add(btnProductEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 288, 73, -1));
+        Add.add(btnProductEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 310, 80, -1));
 
         btnProductReset.setBackground(new java.awt.Color(153, 51, 0));
         btnProductReset.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnProductReset.setForeground(new java.awt.Color(255, 255, 255));
         btnProductReset.setText("Reset");
+        btnProductReset.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProductReset.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnProductResetMouseClicked(evt);
             }
         });
-        Add.add(btnProductReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 329, -1, -1));
+        Add.add(btnProductReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, 80, -1));
 
-        tblProductView.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnProductDetele.setBackground(new java.awt.Color(153, 0, 0));
+        btnProductDetele.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnProductDetele.setForeground(new java.awt.Color(255, 255, 255));
+        btnProductDetele.setText("Delete");
+        btnProductDetele.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnProductDetele.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnProductDeteleMouseClicked(evt);
+            }
+        });
+        Add.add(btnProductDetele, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 360, 80, -1));
+
         tblProductView.setForeground(new java.awt.Color(0, 0, 0));
         tblProductView.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -970,13 +1007,13 @@ public class ProductView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblProductView);
 
-        Add.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 66, 482, 327));
+        Add.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 480, 340));
 
         MainView.addTab("Add", Add);
 
         Sales.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel4.setBackground(new java.awt.Color(51, 0, 0));
+        jPanel4.setBackground(new java.awt.Color(51, 0, 51));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
@@ -990,7 +1027,7 @@ public class ProductView extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Name");
-        Sales.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 75, 22));
+        Sales.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 75, 22));
 
         comProductName.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         comProductName.setForeground(new java.awt.Color(0, 0, 0));
@@ -1000,12 +1037,12 @@ public class ProductView extends javax.swing.JFrame {
                 comProductNameMouseClicked(evt);
             }
         });
-        Sales.add(comProductName, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 130, -1));
+        Sales.add(comProductName, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 150, -1));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Quantity");
-        Sales.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 75, 22));
+        Sales.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 75, 22));
 
         txtSalesQuantity.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtSalesQuantity.setForeground(new java.awt.Color(0, 0, 0));
@@ -1019,37 +1056,38 @@ public class ProductView extends javax.swing.JFrame {
                 txtSalesQuantityActionPerformed(evt);
             }
         });
-        Sales.add(txtSalesQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 130, -1));
+        Sales.add(txtSalesQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 150, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Date");
-        Sales.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 38, -1));
+        Sales.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 38, -1));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("UnitPrice");
-        Sales.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 75, -1));
+        Sales.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 75, -1));
 
         txtSalesUnitPrice.setEditable(false);
         txtSalesUnitPrice.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtSalesUnitPrice.setForeground(new java.awt.Color(0, 0, 0));
-        Sales.add(txtSalesUnitPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 130, -1));
+        Sales.add(txtSalesUnitPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 150, -1));
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Total Price");
-        Sales.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 75, 22));
+        Sales.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 75, 22));
 
         txtSalesTotalPrice.setEditable(false);
         txtSalesTotalPrice.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtSalesTotalPrice.setForeground(new java.awt.Color(0, 0, 0));
-        Sales.add(txtSalesTotalPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 130, -1));
+        Sales.add(txtSalesTotalPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 150, -1));
 
         btnSalesSave.setBackground(new java.awt.Color(0, 102, 153));
         btnSalesSave.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSalesSave.setForeground(new java.awt.Color(255, 255, 255));
-        btnSalesSave.setText("Save");
+        btnSalesSave.setText("Sale Save");
+        btnSalesSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalesSave.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSalesSaveMouseClicked(evt);
@@ -1060,44 +1098,57 @@ public class ProductView extends javax.swing.JFrame {
                 btnSalesSaveActionPerformed(evt);
             }
         });
-        Sales.add(btnSalesSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(414, 207, -1, -1));
+        Sales.add(btnSalesSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(412, 230, 90, -1));
 
         btnSalesEdit.setBackground(new java.awt.Color(102, 0, 102));
         btnSalesEdit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSalesEdit.setForeground(new java.awt.Color(255, 255, 255));
-        btnSalesEdit.setText("Edit");
-        Sales.add(btnSalesEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(531, 207, 80, -1));
+        btnSalesEdit.setText("Sale Edit");
+        btnSalesEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalesEdit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalesEditMouseClicked(evt);
+            }
+        });
+        Sales.add(btnSalesEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230, 90, -1));
 
         btnSalesReset.setBackground(new java.awt.Color(0, 102, 51));
         btnSalesReset.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSalesReset.setForeground(new java.awt.Color(255, 255, 255));
         btnSalesReset.setText("Reset");
-        Sales.add(btnSalesReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(414, 258, -1, -1));
+        btnSalesReset.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalesReset.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalesResetMouseClicked(evt);
+            }
+        });
+        Sales.add(btnSalesReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(412, 300, 100, -1));
 
         btnSalesDelete.setBackground(new java.awt.Color(153, 0, 0));
         btnSalesDelete.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSalesDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnSalesDelete.setText("Delete");
-        Sales.add(btnSalesDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(531, 258, 80, -1));
+        btnSalesDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Sales.add(btnSalesDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 300, 90, -1));
 
         salesDate.setForeground(new java.awt.Color(0, 0, 0));
-        Sales.add(salesDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 129, -1));
+        Sales.add(salesDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 150, -1));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Available Product");
-        Sales.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 130, 20));
+        Sales.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, 130, 20));
 
         lblStock.setBackground(new java.awt.Color(0, 0, 0));
         lblStock.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblStock.setForeground(new java.awt.Color(0, 0, 0));
-        Sales.add(lblStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 80, 81, 20));
+        Sales.add(lblStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, 81, 20));
 
         MainView.addTab("Sales", Sales);
 
         Stock.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel5.setBackground(new java.awt.Color(51, 0, 51));
+        jPanel5.setBackground(new java.awt.Color(0, 51, 0));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
@@ -1108,7 +1159,6 @@ public class ProductView extends javax.swing.JFrame {
 
         Stock.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, -1));
 
-        tblStock.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tblStock.setForeground(new java.awt.Color(0, 0, 0));
         tblStock.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1127,7 +1177,7 @@ public class ProductView extends javax.swing.JFrame {
         Reports.setPreferredSize(new java.awt.Dimension(700, 400));
         Reports.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel6.setBackground(new java.awt.Color(51, 0, 51));
+        jPanel6.setBackground(new java.awt.Color(51, 0, 0));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
@@ -1158,47 +1208,50 @@ public class ProductView extends javax.swing.JFrame {
         btnReportPurchase.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnReportPurchase.setForeground(new java.awt.Color(255, 255, 255));
         btnReportPurchase.setText("Purchase");
+        btnReportPurchase.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnReportPurchase.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnReportPurchaseMouseClicked(evt);
             }
         });
-        Reports.add(btnReportPurchase, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, -1, -1));
+        Reports.add(btnReportPurchase, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 90, -1));
 
         btnReportSales.setBackground(new java.awt.Color(51, 0, 51));
         btnReportSales.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnReportSales.setForeground(new java.awt.Color(255, 255, 255));
         btnReportSales.setText("Sales");
+        btnReportSales.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnReportSales.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnReportSalesMouseClicked(evt);
             }
         });
-        Reports.add(btnReportSales, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 90, -1));
+        Reports.add(btnReportSales, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 90, -1));
 
         btnReportGrossProfit.setBackground(new java.awt.Color(51, 102, 0));
         btnReportGrossProfit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnReportGrossProfit.setForeground(new java.awt.Color(255, 255, 255));
         btnReportGrossProfit.setText("Gross Profit");
+        btnReportGrossProfit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnReportGrossProfit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnReportGrossProfitMouseClicked(evt);
             }
         });
-        Reports.add(btnReportGrossProfit, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
+        Reports.add(btnReportGrossProfit, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 100, -1));
 
         btnReportReset.setBackground(new java.awt.Color(153, 0, 0));
         btnReportReset.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnReportReset.setForeground(new java.awt.Color(255, 255, 255));
         btnReportReset.setText("Reset");
+        btnReportReset.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnReportReset.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnReportResetMouseClicked(evt);
             }
         });
-        Reports.add(btnReportReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, 80, -1));
+        Reports.add(btnReportReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 100, -1));
 
-        tblReports.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tblReports.setForeground(new java.awt.Color(0, 0, 0));
         tblReports.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1217,13 +1270,13 @@ public class ProductView extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblProfit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblProfit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblProfit.setForeground(new java.awt.Color(0, 0, 0));
         lblProfit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblProfit.setText("Profit:");
+        lblProfit.setText("Gross Profit:");
         jPanel1.add(lblProfit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 30));
 
-        Reports.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, 150, 30));
+        Reports.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 150, 30));
 
         MainView.addTab("Report", Reports);
 
@@ -1359,6 +1412,22 @@ public class ProductView extends javax.swing.JFrame {
          resetRepot();
     }//GEN-LAST:event_btnReportResetMouseClicked
 
+    private void btnSalesEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalesEditMouseClicked
+        // TODO add your handling code here:
+        editProduct();
+    }//GEN-LAST:event_btnSalesEditMouseClicked
+
+    private void btnSalesResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalesResetMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnSalesResetMouseClicked
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+        
+        System.exit(0);
+    }//GEN-LAST:event_btnExitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1400,6 +1469,7 @@ public class ProductView extends javax.swing.JFrame {
     private javax.swing.JPanel Sales;
     private javax.swing.JPanel Stock;
     private javax.swing.JButton btnAddProduct;
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnProductAdd;
     private javax.swing.JButton btnProductDetele;
     private javax.swing.JButton btnProductEdit;
@@ -1430,6 +1500,10 @@ public class ProductView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
