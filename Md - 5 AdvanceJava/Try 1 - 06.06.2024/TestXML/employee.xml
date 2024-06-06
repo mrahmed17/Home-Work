@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
+-->
+
+
+<company>
+    <employee>
+        <id>1</id>
+        <name>John Doe</name>
+        <position>Software Engineer</position>
+        <salary>60000</salary>
+    </employee>
+    <employee>
+        <id>2</id>
+        <name>Jane Smith</name>
+        <position>Project Manager</position>
+        <salary>80000</salary>
+    </employee>
+    <employee>
+        <id>3</id>
+        <name>Raju Ahmed</name>
+        <position>Project Manager</position>
+        <salary>80000</salary>
+    </employee>
+</company>
