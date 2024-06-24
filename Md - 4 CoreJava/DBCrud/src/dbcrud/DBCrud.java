@@ -15,17 +15,20 @@ public class DBCrud {
     static String sql = "";
 
     public static void main(String[] args) {
-        
-        insertStd("Raju", "raju@gmail.com", "Azimpur", "123456789");
-        System.out.println("\n After Insert Data \n");
-        showStd();
-        deleteStd(1);
-        System.out.println("\n After Delete Data \n");
-        showStd();
-        editStd("Raju Ahmed", "rajuahmed@gmail.com", "Azimpur", "9875650654", 2);
+
+//        insertStd("Raju", "raju@gmail.com", "Azimpur", "123456789");
+//        System.out.println("\n After Insert Data \n");
+//        showStd();
+//        deleteStd();
+//        System.out.println("\n After Delete Data \n");
+//        showStd();
+        editStd("Raju", "raju@gmail.com", "Azimpur", "9875650654", 2);
+        editStd("Mostafa", "mostafa@gmail.com", "Azimpur", "25575650654", 3);
+        editStd("Nusrat", "nusrat@gmail.com", "Mirpur", "4654650654", 4);
+        editStd("Shabab", "shabab@gmail.com", "Dhanmondi", "5465450654", 5);
         System.out.println("\n After Edit Data \n");
         showStd();
-        
+
     }
 
     public static void insertStd(String name, String email, String address, String cell) {
@@ -66,13 +69,11 @@ public class DBCrud {
                 String id = rs.getString("id");
 
                 System.out.println("ID No: " + id + "\tName: " + name + "\tEmail: " + email + "\tAddress: " + address + "\tCell No: " + cell);
-
-                ps.executeUpdate();
-                ps.close();
-                rs.close();
-                db.getCon().close();
-
             }
+
+            ps.close();
+            rs.close();
+            db.getCon().close();
 
         } catch (SQLException ex) {
             Logger.getLogger(DBCrud.class.getName()).log(Level.SEVERE, null, ex);
@@ -124,8 +125,6 @@ public class DBCrud {
 }
 
 //Output
-
-
 //run:
 //
 // After Insert Data 
