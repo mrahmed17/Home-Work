@@ -1,0 +1,26 @@
+Node JS
+=======
+First install node-js
+node --version (for checking node version that installed on your computer)
+npm (install in the directory)
+npm -v (For checking npm version)
+
+
+Angular JS
+==========
+npm install -g @angular/cli (For install angular)
+ng v (For checking angular version)
+npm fund 
+ctrl+shift+c (For copying from cmd)
+
+
+ng new projectname (For create a new project where you install)
+ng serve or ng s (For start)
+ctrl+c (For close)
+
+If error run the command (powershell Set-ExecutionPolicy RemoteSigned)
+
+
+add bootstrap npm from bootstrap website
+ng g c student (For make a new component)
+ng generate component --standalone false/true
