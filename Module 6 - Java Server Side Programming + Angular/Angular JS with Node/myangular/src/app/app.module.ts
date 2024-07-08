@@ -3,12 +3,18 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StudentComponent } from './student/student.component';
+import { StudentComponent } from './student-create/student.component';
+import { StudentListComponent } from './student-list/student-list.component';
+import { StudentDetailsComponent } from './student-details/student-details.component';
+import { StudentUpdateComponent } from './student-update/student-update.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StudentComponent
+    StudentComponent,
+    StudentListComponent,
+    StudentDetailsComponent,
+    StudentUpdateComponent
   ],
   imports: [
     BrowserModule,

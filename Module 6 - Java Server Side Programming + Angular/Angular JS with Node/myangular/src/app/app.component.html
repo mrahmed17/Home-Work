@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link active" aria-current="page" href="">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="student/student.component.html">Registration Form</a></li>
+        <li class="nav-item"><a class="nav-link" href="">Registration Form</a></li>
         <li class="nav-item"><a class="nav-link" href="">Registered Student</a></li>
         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button"
             data-bs-toggle="dropdown" aria-expanded="false"> Add Course </a>
@@ -34,7 +34,53 @@
 </nav>
 
 
-<router-outlet></router-outlet>
+<div class="container">
+  <h1 class="text-center text-danger"> Content Title Show Here</h1>
+</div>
+
+<div class="text-center text-success">
+  <h1>Hello Dear "User Name Show Here"!!</h1>
+  <h2>Hello Dear "User Name Show Here"!!</h2>
+
+  <h3>Hello Dear "User Name Show Here"!!</h3>
+  <h4>Hello Dear "User Name Show Here"!!</h4>
+
+  <h5>Hello Dear "User Name Show Here"!!</h5>
+  <h6>Hello Dear "User Name Show Here"!!</h6>
+
+</div>
+
+<div class="text-center text-primary">
+  <h1>Hello Dear "User Name Show Here"!!</h1>
+  <h2>Hello Dear "User Name Show Here"!!</h2>
+
+  <h3>Hello Dear "User Name Show Here"!!</h3>
+  <h4>Hello Dear "User Name Show Here"!!</h4>
+
+  <h5>Hello Dear "User Name Show Here"!!</h5>
+  <h6>Hello Dear "User Name Show Here"!!</h6>
+</div>
+
+<!-- <nav class="navbar navbar-expand-lg bg-dark">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon">|||</span>
+  </button> </nav> -->
+
+<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+  <div class="navbar-nav ml-auto">
+    <a class="nav-link" routerLink="/student" routerLinkActive="itemActive">Student list</a>
+    <a class="nav-link" routerLink="/create" routerLinkActive="itemActive">Add New Student</a>
+    <!-- <a class="nav-link" routerLink="/update" routerLinkActive="itemActive"></a> -->
+    <!-- <a class="nav-link" routerLink="/" routerLinkActive="itemActive"></a> -->
+    <!-- <a class="nav-link" routerLink="/" routerLinkActive="itemActive"></a> -->
+  </div>
+</div>
+
+
+<router-outlet> </router-outlet>
+
 
 <div class="container">
 
@@ -46,7 +92,7 @@
           <use xlink:href="#bootstrap"></use>
         </svg>
       </a>
-      <p class="text-muted">Copy Right 2024</p>
+      <p class="text-muted ">All Right Reserved 2024 ©TamimAhmedRaju</p>
     </div>
 
     <div class="col">
