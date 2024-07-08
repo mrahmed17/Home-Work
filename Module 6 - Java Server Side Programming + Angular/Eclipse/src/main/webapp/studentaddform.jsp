@@ -23,7 +23,7 @@
 		</div>
 		<div class="mb-3">
 			<label for="exampleInputPassword1" class="form-label">Cell
-				Number</label> <input type="" text"" class="form-control"
+				Number</label> <input type=" text" class="form-control"
 				id="exampleInputPassword1" name="cell">
 		</div>
 
