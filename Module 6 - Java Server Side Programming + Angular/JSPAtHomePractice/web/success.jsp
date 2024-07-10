@@ -1,8 +1,3 @@
-<%-- 
-    Document   : success
-    Created on : Jul 3, 2024, 10:23:02 AM
-    Author     : Magic Box
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
