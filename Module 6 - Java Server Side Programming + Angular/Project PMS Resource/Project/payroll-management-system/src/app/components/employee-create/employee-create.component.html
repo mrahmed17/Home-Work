@@ -1,0 +1,32 @@
+<h2>Create Employee</h2>
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name</label>
+    <input id="name" formControlName="name">
+    <div *ngIf="employeeForm.get('name')?.invalid && employeeForm.get('name')?.touched">
+      Name is required.
+    </div>
+  </div>
+  <div>
+    <label for="position">Position</label>
+    <input id="position" formControlName="position">
+    <div *ngIf="employeeForm.get('position')?.invalid && employeeForm.get('position')?.touched">
+      Position is required.
+    </div>
+  </div>
+  <div>
+    <label for="department">Department</label>
+    <input id="department" formControlName="department">
+    <div *ngIf="employeeForm.get('department')?.invalid && employeeForm.get('department')?.touched">
+      Department is required.
+    </div>
+  </div>
+  <div>
+    <label for="salary">Salary</label>
+    <input id="salary" formControlName="salary" type="number">
+    <div *ngIf="employeeForm.get('salary')?.invalid && employeeForm.get('salary')?.touched">
+      Salary must be a positive number.
+    </div>
+  </div>
+  <button type="submit" [disabled]="employeeForm.invalid">Create</button>
+</form>
