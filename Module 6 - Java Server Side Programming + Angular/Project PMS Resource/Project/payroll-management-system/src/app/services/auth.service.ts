@@ -36,6 +36,10 @@ export class AuthService {
         return user;
       }));
   }
+   hasRole(role: string): boolean {
+    const currentUser = this.currentUserValue;
+    return currentUser && currentUser.roles && currentUser.roles.includes(role);
+  }
 
   logout() {
     if (this.isBrowser()) {
