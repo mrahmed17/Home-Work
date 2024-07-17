@@ -1,0 +1,11 @@
+<div class="custom-reports">
+  <h2>Custom Reports</h2>
+  <form [formGroup]="reportForm" (ngSubmit)="generateReport()">
+    <label for="criteria">Criteria</label>
+    <input id="criteria" formControlName="criteria" type="text">
+
+    <!-- Add more fields as needed -->
+
+    <button type="submit">Generate Report</button>
+  </form>
+</div>

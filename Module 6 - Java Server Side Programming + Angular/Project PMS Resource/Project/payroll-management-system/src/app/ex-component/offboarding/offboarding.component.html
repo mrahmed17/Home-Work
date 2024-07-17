@@ -1,0 +1,14 @@
+<div class="offboarding">
+  <h2>Employee Offboarding</h2>
+  <form [formGroup]="offboardingForm" (ngSubmit)="offboardEmployee()">
+    <label for="employeeId">Employee ID</label>
+    <input id="employeeId" formControlName="employeeId" type="text">
+
+    <label for="exitDate">Exit Date</label>
+    <input id="exitDate" formControlName="exitDate" type="date">
+
+    <!-- Add more fields as needed -->
+
+    <button type="submit">Offboard Employee</button>
+  </form>
+</div>

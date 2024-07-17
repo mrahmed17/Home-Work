@@ -23,7 +23,23 @@
           <li class="nav-item">
             <a class="nav-link" href="">Edit Employee</a>
           </li>
-
+          <ul>
+            <li><a routerLink="/onboarding">Onboarding</a></li>
+            <li><a routerLink="/offboarding">Offboarding</a></li>
+            <li><a routerLink="/training-programs">Training Programs</a></li>
+            <li><a routerLink="/skill-development">Skill Development</a></li>
+            <li><a routerLink="/profile-update">Profile Update</a></li>
+            <li><a routerLink="/expense-claims">Expense Claims</a></li>
+            <li><a routerLink="/hr-analytics">HR Analytics</a></li>
+            <li><a routerLink="/custom-reports">Custom Reports</a></li>
+            <li><a routerLink="/policy-documents">Policy Documents</a></li>
+            <li><a routerLink="/compliance-tracking">Compliance Tracking</a></li>
+            <li><a routerLink="/employee-feedback">Employee Feedback</a></li>
+            <li><a routerLink="/surveys">Surveys</a></li>
+            <li><a routerLink="/health-programs">Health Programs</a></li>
+            <li><a routerLink="/wellness-resources">Wellness Resources</a></li>
+            <!-- other links -->
+          </ul>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Admin Panel
@@ -50,7 +66,12 @@
 <div class="container">
   <router-outlet></router-outlet>
 </div>
+
 <button (click)="logout()">Logout</button>
+
+
+
+
 <!-- Footer -->
 <footer class="bg-dark text-white mt-5">
   <div class="container py-4">

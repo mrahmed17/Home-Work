@@ -14,6 +14,21 @@ import { AuthGuard } from './guards/auth.guard';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProfileComponent } from './profile/profile.component';
+import { OnboardingComponent } from './ex-component/onboarding/onboarding.component';
+import { OffboardingComponent } from './ex-component/offboarding/offboarding.component';
+import { TrainingProgramsComponent } from './ex-component/training-programs/training-programs.component';
+import { SkillDevelopmentComponent } from './ex-component/skill-development/skill-development.component';
+import { ProfileUpdateComponent } from './ex-component/profile-update/profile-update.component';
+import { ExpenseClaimsComponent } from './ex-component/expense-claims/expense-claims.component';
+import { HRAnalyticsComponent } from './ex-component/hr-analytics/hr-analytics.component';
+import { CustomReportsComponent } from './ex-component/custom-reports/custom-reports.component';
+import { PolicyDocumentsComponent } from './ex-component/policy-documents/policy-documents.component';
+import { ComplianceTrackingComponent } from './ex-component/compliance-tracking/compliance-tracking.component';
+import { EmployeeFeedbackComponent } from './ex-component/employee-feedback/employee-feedback.component';
+import { SurveysComponent } from './ex-component/surveys/surveys.component';
+import { HealthProgramsComponent } from './ex-component/health-programs/health-programs.component';
+import { WellnessResourcesComponent } from './ex-component/wellness-resources/wellness-resources.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +38,23 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     EmployeeCreateComponent,
     EmployeeEditComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    ProfileComponent,
+    OnboardingComponent,
+    OffboardingComponent,
+    TrainingProgramsComponent,
+    SkillDevelopmentComponent,
+    ProfileUpdateComponent,
+    ExpenseClaimsComponent,
+    HRAnalyticsComponent,
+    CustomReportsComponent,
+    PolicyDocumentsComponent,
+    ComplianceTrackingComponent,
+    EmployeeFeedbackComponent,
+    SurveysComponent,
+    HealthProgramsComponent,
+    WellnessResourcesComponent,
+    // Other existing components
   ],
   imports: [
     BrowserModule,

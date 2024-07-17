@@ -1,0 +1,11 @@
+<div class="employee-feedback">
+  <h2>Employee Feedback</h2>
+  <form [formGroup]="feedbackForm" (ngSubmit)="submitFeedback()">
+    <label for="feedback">Feedback</label>
+    <textarea id="feedback" formControlName="feedback"></textarea>
+
+    <!-- Add more fields as needed -->
+
+    <button type="submit">Submit Feedback</button>
+  </form>
+</div>

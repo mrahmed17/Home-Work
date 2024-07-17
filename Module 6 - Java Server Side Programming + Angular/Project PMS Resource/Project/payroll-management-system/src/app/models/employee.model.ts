@@ -1,8 +1,10 @@
 export interface Employee {
   id: number;
   name: string;
+  email: string;
+  phoneNumber?: string;
+  departmentId: number;
   position: string;
-  department: string;
+  dateOfJoining: Date;
   salary: number;
-  // Add other necessary fields...
 }

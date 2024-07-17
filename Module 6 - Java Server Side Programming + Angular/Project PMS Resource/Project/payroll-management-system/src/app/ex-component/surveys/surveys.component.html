@@ -1,0 +1,11 @@
+<div class="surveys">
+  <h2>Surveys</h2>
+  <form [formGroup]="surveyForm" (ngSubmit)="submitSurvey()">
+    <label for="survey">Survey</label>
+    <textarea id="survey" formControlName="survey"></textarea>
+
+    <!-- Add more fields as needed -->
+
+    <button type="submit">Submit Survey</button>
+  </form>
+</div>

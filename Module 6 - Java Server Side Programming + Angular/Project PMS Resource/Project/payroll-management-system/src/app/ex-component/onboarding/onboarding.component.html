@@ -1,0 +1,14 @@
+<div class="onboarding">
+  <h2>Employee Onboarding</h2>
+  <form [formGroup]="onboardingForm" (ngSubmit)="onboardEmployee()">
+    <label for="name">Name</label>
+    <input id="name" formControlName="name" type="text">
+
+    <label for="email">Email</label>
+    <input id="email" formControlName="email" type="email">
+
+    <!-- Add more fields as needed -->
+
+    <button type="submit">Onboard Employee</button>
+  </form>
+</div>

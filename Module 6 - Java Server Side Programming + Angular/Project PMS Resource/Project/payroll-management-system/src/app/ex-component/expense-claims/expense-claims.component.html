@@ -1,0 +1,14 @@
+<div class="expense-claims">
+  <h2>Expense Claims</h2>
+  <form [formGroup]="expenseForm" (ngSubmit)="submitExpense()">
+    <label for="amount">Amount</label>
+    <input id="amount" formControlName="amount" type="number">
+
+    <label for="description">Description</label>
+    <input id="description" formControlName="description" type="text">
+
+    <!-- Add more fields as needed -->
+
+    <button type="submit">Submit Expense</button>
+  </form>
+</div>

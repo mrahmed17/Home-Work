@@ -1,0 +1,14 @@
+<div class="profile-update">
+  <h2>Update Profile</h2>
+  <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+    <label for="name">Name</label>
+    <input id="name" formControlName="name" type="text">
+
+    <label for="email">Email</label>
+    <input id="email" formControlName="email" type="email">
+
+    <!-- Add more fields as needed -->
+
+    <button type="submit">Update Profile</button>
+  </form>
+</div>
