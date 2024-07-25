@@ -9,7 +9,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class OffboardingComponent implements OnInit {
   offboardingForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {
+     this.offboardingForm = this.fb.group({
+      // form controls
+    });
+   }
 
   ngOnInit(): void {
     this.offboardingForm = this.fb.group({

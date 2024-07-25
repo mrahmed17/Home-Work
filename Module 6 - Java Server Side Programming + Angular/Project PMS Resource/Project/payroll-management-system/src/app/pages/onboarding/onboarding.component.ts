@@ -9,7 +9,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class OnboardingComponent implements OnInit {
   onboardingForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {
+     this.onboardingForm = this.fb.group({
+      // form controls
+    });
+   }
 
   ngOnInit(): void {
     this.onboardingForm = this.fb.group({

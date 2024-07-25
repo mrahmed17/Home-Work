@@ -9,7 +9,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class EmployeeFeedbackComponent implements OnInit {
   feedbackForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {
+    this.feedbackForm = this.fb.group({
+    });
+  }
 
   ngOnInit(): void {
     this.feedbackForm = this.fb.group({

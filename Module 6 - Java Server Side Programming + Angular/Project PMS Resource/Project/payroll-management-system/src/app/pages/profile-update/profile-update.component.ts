@@ -9,7 +9,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ProfileUpdateComponent implements OnInit {
   profileForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) { 
+     this.profileForm = this.fb.group({
+      // form controls
+    });
+  }
 
   ngOnInit(): void {
     this.profileForm = this.fb.group({

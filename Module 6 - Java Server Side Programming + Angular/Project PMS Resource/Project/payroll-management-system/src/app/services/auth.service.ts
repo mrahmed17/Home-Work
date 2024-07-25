@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/auth'; // Replace with your actual API URL
+  private apiUrl = 'http://localhost:3000/auth';
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
 

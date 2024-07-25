@@ -9,7 +9,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ExpenseClaimsComponent implements OnInit {
   expenseForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) { 
+ this.expenseForm = this.fb.group({
+      
+    });
+
+  }
 
   ngOnInit(): void {
     this.expenseForm = this.fb.group({

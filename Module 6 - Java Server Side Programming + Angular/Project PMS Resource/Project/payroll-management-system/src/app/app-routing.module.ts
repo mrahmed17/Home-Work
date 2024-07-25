@@ -3,26 +3,27 @@ import { RouterModule, Routes } from '@angular/router';
 import { EmployeeListComponent } from '././components/employee/employee-list/employee-list.component';
 import { EmployeeCreateComponent } from '././components/employee/employee-create/employee-create.component';
 import { LoginComponent } from './components/login/login.component';
-import { RoleGuard } from './guards/auth.guard';
-import { OnboardingComponent } from './ex-component/onboarding/onboarding.component';
-import { OffboardingComponent } from './ex-component/offboarding/offboarding.component';
-import { TrainingProgramsComponent } from './ex-component/training-programs/training-programs.component';
-import { SkillDevelopmentComponent } from './ex-component/skill-development/skill-development.component';
-import { ProfileUpdateComponent } from './ex-component/profile-update/profile-update.component';
-import { ExpenseClaimsComponent } from './ex-component/expense-claims/expense-claims.component';
-import { HRAnalyticsComponent } from './ex-component/hr-analytics/hr-analytics.component';
-import { CustomReportsComponent } from './ex-component/custom-reports/custom-reports.component';
-import { PolicyDocumentsComponent } from './ex-component/policy-documents/policy-documents.component';
-import { ComplianceTrackingComponent } from './ex-component/compliance-tracking/compliance-tracking.component';
-import { EmployeeFeedbackComponent } from './ex-component/employee-feedback/employee-feedback.component';
-import { SurveysComponent } from './ex-component/surveys/surveys.component';
-import { HealthProgramsComponent } from './ex-component/health-programs/health-programs.component';
-import { WellnessResourcesComponent } from './ex-component/wellness-resources/wellness-resources.component';
+import { AuthGuard } from './guards/auth.guard';
+import { OnboardingComponent } from './pages/onboarding/onboarding.component';
+import { OffboardingComponent } from './pages/offboarding/offboarding.component';
+import { TrainingProgramsComponent } from './pages/training-programs/training-programs.component';
+import { SkillDevelopmentComponent } from './pages/skill-development/skill-development.component';
+import { ProfileUpdateComponent } from './pages/profile-update/profile-update.component';
+import { ExpenseClaimsComponent } from './pages/expense-claims/expense-claims.component';
+import { HRAnalyticsComponent } from './pages/hr-analytics/hr-analytics.component';
+import { CustomReportsComponent } from './pages/custom-reports/custom-reports.component';
+import { PolicyDocumentsComponent } from './pages/policy-documents/policy-documents.component';
+import { ComplianceTrackingComponent } from './pages/compliance-tracking/compliance-tracking.component';
+import { EmployeeFeedbackComponent } from './pages/employee-feedback/employee-feedback.component';
+import { SurveysComponent } from './pages/surveys/surveys.component';
+import { HealthProgramsComponent } from './pages/health-programs/health-programs.component';
+import { WellnessResourcesComponent } from './pages/wellness-resources/wellness-resources.component';
+
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'employees', component: EmployeeListComponent, canActivate: [RoleGuard], data: { expectedRole: 'Admin' } },
-  { path: 'employees/create', component: EmployeeCreateComponent, canActivate: [RoleGuard], data: { expectedRole: 'Admin' } },
+  { path: 'employees', component: EmployeeListComponent, canActivate: [AuthGuard], data: { expectedRole: 'Admin' } },
+  { path: 'employees/create', component: EmployeeCreateComponent, canActivate: [AuthGuard], data: { expectedRole: 'Admin' } },
   { path: '', redirectTo: '/employees', pathMatch: 'full' },
   { path: '**', redirectTo: '/employees' },
    { path: 'onboarding', component: OnboardingComponent },

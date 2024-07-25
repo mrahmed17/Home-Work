@@ -13,22 +13,23 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ProfileComponent } from './profile/profile.component';
-import { OnboardingComponent } from './ex-component/onboarding/onboarding.component';
-import { OffboardingComponent } from './ex-component/offboarding/offboarding.component';
-import { TrainingProgramsComponent } from './ex-component/training-programs/training-programs.component';
-import { SkillDevelopmentComponent } from './ex-component/skill-development/skill-development.component';
-import { ProfileUpdateComponent } from './ex-component/profile-update/profile-update.component';
-import { ExpenseClaimsComponent } from './ex-component/expense-claims/expense-claims.component';
-import { HRAnalyticsComponent } from './ex-component/hr-analytics/hr-analytics.component';
-import { CustomReportsComponent } from './ex-component/custom-reports/custom-reports.component';
-import { PolicyDocumentsComponent } from './ex-component/policy-documents/policy-documents.component';
-import { ComplianceTrackingComponent } from './ex-component/compliance-tracking/compliance-tracking.component';
-import { EmployeeFeedbackComponent } from './ex-component/employee-feedback/employee-feedback.component';
-import { SurveysComponent } from './ex-component/surveys/surveys.component';
-import { HealthProgramsComponent } from './ex-component/health-programs/health-programs.component';
-import { WellnessResourcesComponent } from './ex-component/wellness-resources/wellness-resources.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { OnboardingComponent } from './pages/onboarding/onboarding.component';
+import { OffboardingComponent } from './pages/offboarding/offboarding.component';
+import { TrainingProgramsComponent } from './pages/training-programs/training-programs.component';
+import { SkillDevelopmentComponent } from './pages/skill-development/skill-development.component';
+import { ProfileUpdateComponent } from './pages/profile-update/profile-update.component';
+import { ExpenseClaimsComponent } from './pages/expense-claims/expense-claims.component';
+import { HRAnalyticsComponent } from './pages/hr-analytics/hr-analytics.component';
+import { CustomReportsComponent } from './pages/custom-reports/custom-reports.component';
+import { PolicyDocumentsComponent } from './pages/policy-documents/policy-documents.component';
+import { ComplianceTrackingComponent } from './pages/compliance-tracking/compliance-tracking.component';
+import { EmployeeFeedbackComponent } from './pages/employee-feedback/employee-feedback.component';
+import { SurveysComponent } from './pages/surveys/surveys.component';
+import { HealthProgramsComponent } from './pages/health-programs/health-programs.component';
+import { WellnessResourcesComponent } from './pages/wellness-resources/wellness-resources.component';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +40,6 @@ import { WellnessResourcesComponent } from './ex-component/wellness-resources/we
     EmployeeEditComponent,
     LoginComponent,
     DashboardComponent,
-    ProfileComponent,
     OnboardingComponent,
     OffboardingComponent,
     TrainingProgramsComponent,
@@ -54,7 +54,7 @@ import { WellnessResourcesComponent } from './ex-component/wellness-resources/we
     SurveysComponent,
     HealthProgramsComponent,
     WellnessResourcesComponent,
-    // Other existing components
+   
   ],
   imports: [
     BrowserModule,

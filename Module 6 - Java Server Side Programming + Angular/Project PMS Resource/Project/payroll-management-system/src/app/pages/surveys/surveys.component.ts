@@ -9,7 +9,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class SurveysComponent implements OnInit {
   surveyForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) { 
+     this.surveyForm = this.fb.group({
+      // form controls
+    });
+  }
 
   ngOnInit(): void {
     this.surveyForm = this.fb.group({

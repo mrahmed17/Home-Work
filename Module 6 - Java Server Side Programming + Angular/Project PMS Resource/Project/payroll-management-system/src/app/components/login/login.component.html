@@ -7,6 +7,7 @@
       Username is required.
     </div>
   </div>
+
   <div class="container form-control">
     <label for="password">Password </label>
     <input id="password" formControlName="password" type="password">
@@ -14,6 +15,6 @@
       Password is required.
     </div>
   </div>
-  <button type="submit" [disabled]="loginForm.invalid">Login</button>
+  <button type="submit" [disabled]="loginForm.invalid" class="btn btn-success">Login</button>
   <div *ngIf="error">{{ error }}</div>
 </form>
