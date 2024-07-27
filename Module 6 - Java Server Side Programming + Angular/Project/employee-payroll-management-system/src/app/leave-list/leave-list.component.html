@@ -1,0 +1,25 @@
+<table>
+  <thead>
+    <tr>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Employee</th>
+      <th>Reason</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let leave of leaves">
+      <td>{{ leave.startDate | date }}</td>
+      <td>{{ leave.endDate | date }}</td>
+      <td>{{ getEmployeeName(leave.employeeId) }}</td>
+      <td>{{ leave.reason }}</td>
+      <td>{{ leave.status }}</td>
+      <td>
+        <button (click)="approveLeave(leave.id)">Approve</button>
+        <button (click)="rejectLeave(leave.id)">Reject</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

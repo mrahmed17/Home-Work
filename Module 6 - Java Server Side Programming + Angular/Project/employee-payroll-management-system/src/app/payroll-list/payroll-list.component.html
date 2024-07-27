@@ -1,0 +1,25 @@
+<p>payroll-list works!</p>
+<table>
+  <thead>
+    <tr>
+      <th>Month</th>
+      <th>Year</th>
+      <th>Employee</th>
+      <th>Basic Salary</th>
+      <th>Bonuses</th>
+      <th>Deductions</th>
+      <th>Net Salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let payroll of payrolls">
+      <td>{{ payroll.month }}</td>
+      <td>{{ payroll.year }}</td>
+      <td>{{ getEmployeeName(payroll.employeeId) }}</td>
+      <td>{{ payroll.basicSalary | currency }}</td>
+      <td>{{ payroll.bonuses | currency }}</td>
+      <td>{{ payroll.deductions | currency }}</td>
+      <td>{{ payroll.netSalary | currency }}</td>
+    </tr>
+  </tbody>
+</table>

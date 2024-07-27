@@ -1,23 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Payroll } from '../models/payroll.model';
+import { PayrollService } from '../services/payroll.service';
+import { EmployeeService } from '../services/employee.service';
 
 @Component({
-  selector: 'app-attendance-list',
-  templateUrl: './attendance-list.component.html',
-  styleUrl: './attendance-list.component.css'
+  selector: 'app-payroll-list',
+  templateUrl: './payroll-list.component.html'
 })
-export class AttendanceListComponent implements OnInit {
-  attendanceRecords: Attendance[] = [];
+export class PayrollListComponent implements OnInit {
+  payrolls: Payroll[] = [];
   employees: { [key: number]: string } = {};
 
   constructor(
-    private attendance: AttendanceService,
+    private payroll: PayrollService,
     private employeeService: EmployeeService
   ) {}
 
   ngOnInit(): void {
-    this.attendance.getAttendanceRecords().subscribe((data) => {
-      this.attendanceRecords = data;
+    this.payroll.getPayrolls().subscribe((data) => {
+      this.payrolls = data;
     });
     this.employeeService.getEmployees().subscribe((employees) => {
       employees.forEach(employee => {
@@ -30,4 +31,3 @@ export class AttendanceListComponent implements OnInit {
     return this.employees[employeeId];
   }
 }
-

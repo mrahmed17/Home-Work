@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Attendance } from '../models/attendance.model';
+import { AttendanceService } from '../services/attendance.service';
+import { EmployeeService } from '../services/employee.service';
 
 @Component({
   selector: 'app-attendance-list',
-  templateUrl: './attendance-list.component.html',
-  styleUrl: './attendance-list.component.css'
+  templateUrl: './attendance-list.component.html'
 })
 export class AttendanceListComponent implements OnInit {
   attendanceRecords: Attendance[] = [];
@@ -30,4 +31,3 @@ export class AttendanceListComponent implements OnInit {
     return this.employees[employeeId];
   }
 }
-

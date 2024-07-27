@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import { EmployeeService } from '../services/employee.service';
+import { Employee } from '../models/employee.model';
 
 @Component({
   selector: 'app-employee-detail',
-  templateUrl: './employee-detail.component.html',
-  styleUrl: './employee-detail.component.css'
+  templateUrl: './employee-detail.component.html'
 })
-
 export class EmployeeDetailComponent implements OnInit {
   employee: Employee | undefined;
 
@@ -25,4 +24,3 @@ export class EmployeeDetailComponent implements OnInit {
     // Implement navigation logic here
   }
 }
-

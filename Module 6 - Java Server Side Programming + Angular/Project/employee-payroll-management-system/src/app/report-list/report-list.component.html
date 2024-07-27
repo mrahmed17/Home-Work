@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <th>Report Name</th>
+      <th>Description</th>
+      <th>Date Created</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let report of reports">
+      <td>{{ report.name }}</td>
+      <td>{{ report.description }}</td>
+      <td>{{ report.dateCreated | date }}</td>
+      <td>
+        <button (click)="viewReport(report.id)">View</button>
+        <button (click)="editReport(report.id)">Edit</button>
+        <button (click)="deleteReport(report.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
