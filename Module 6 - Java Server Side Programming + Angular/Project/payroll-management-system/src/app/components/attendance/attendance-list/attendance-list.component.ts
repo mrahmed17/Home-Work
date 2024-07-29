@@ -1,33 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AttendanceService } from '../../../services/attendance.service';
+import { Attendance } from '../../../models/attendance.model';
 
 @Component({
   selector: 'app-attendance-list',
   templateUrl: './attendance-list.component.html',
-  styleUrl: './attendance-list.component.css'
+  styleUrls: ['./attendance-list.component.css']
 })
 export class AttendanceListComponent implements OnInit {
-  attendanceRecords: Attendance[] = [];
-  employees: { [key: number]: string } = {};
+  attendances: Attendance[] = [];
 
-  constructor(
-    private attendance: AttendanceService,
-    private employeeService: EmployeeService
-  ) {}
+  constructor(private attendanceService: AttendanceService) { }
 
   ngOnInit(): void {
-    this.attendance.getAttendanceRecords().subscribe((data) => {
-      this.attendanceRecords = data;
-    });
-    this.employeeService.getEmployees().subscribe((employees) => {
-      employees.forEach(employee => {
-        this.employees[employee.id] = employee.name;
-      });
-    });
-  }
-
-  getEmployeeName(employeeId: number): string {
-    return this.employees[employeeId];
+    this.attendanceService.getAttendances().subscribe(data => this.attendances = data);
   }
 }
-

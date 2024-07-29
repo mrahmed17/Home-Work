@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from '../services/employee.service';
-import { LeaveService } from '../services/leave.service';
-import { PayrollService } from '../services/payroll.service';
+import { EmployeeService } from '../../services/employee.service';
+import { LeaveService } from '../../services/leave.service';
+import { PayrollService } from '../../services/payroll.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,14 +17,14 @@ export class DashboardComponent implements OnInit {
     private employeeService: EmployeeService,
     private leaveService: LeaveService,
     private payrollService: PayrollService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.employeeService.getEmployees().subscribe(employees => {
       this.totalEmployees = employees.length;
     });
 
-    this.leaveService.getLeaves().subscribe(leaves => {
+    this.leaveService.getLeaves().subscribe((leaves: { filter: (arg0: (leave: any) => boolean) => { (): any; new(): any; length: number; }; }) => {
       this.pendingLeaves = leaves.filter(leave => leave.status === 'Pending').length;
     });
 

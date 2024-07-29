@@ -11,20 +11,21 @@ export class EmployeeFeedbackComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.feedbackForm = this.fb.group({
+      feedback: ['', Validators.required]
     });
   }
 
   ngOnInit(): void {
-    this.feedbackForm = this.fb.group({
-      feedback: ['', Validators.required],
-      // Add more form controls as needed
-    });
+    // this.feedbackForm = this.fb.group({
+    //   feedback: ['', Validators.required],
+    //   // Add more form controls as needed
+    // });
   }
 
   submitFeedback(): void {
     if (this.feedbackForm.valid) {
       console.log(this.feedbackForm.value);
-      // Handle feedback submission logic
+     // Logic to handle feedback submission
     }
   }
 }

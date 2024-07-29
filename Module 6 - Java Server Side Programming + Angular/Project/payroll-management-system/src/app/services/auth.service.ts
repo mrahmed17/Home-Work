@@ -8,11 +8,20 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/auth';
+  isLoggedIn() {
+    throw new Error('Method not implemented.');
+  }
+
+  private userRoles: string[] = []; // Example: ['Admin', 'User']
+
+  private apiUrl = 'http://localhost:3000/auth'; // Replace with your actual API URL
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) {
     const storedUser = this.isBrowser() ? localStorage.getItem('currentUser') : null;
     this.currentUserSubject = new BehaviorSubject<any>(storedUser ? JSON.parse(storedUser) : null);
     this.currentUser = this.currentUserSubject.asObservable();
@@ -36,7 +45,7 @@ export class AuthService {
         return user;
       }));
   }
-   hasRole(role: string): boolean {
+  hasRole(role: string): boolean {
     const currentUser = this.currentUserValue;
     return currentUser && currentUser.roles && currentUser.roles.includes(role);
   }
@@ -48,4 +57,11 @@ export class AuthService {
     this.currentUserSubject.next(null);
     this.router.navigate(['/login']);
   }
+  // logout() {
+  //   localStorage.removeItem('currentUser');
+  //   this.currentUserSubject.next(null);
+  //   this.router.navigate(['/login']);
+  // }
+
+
 }

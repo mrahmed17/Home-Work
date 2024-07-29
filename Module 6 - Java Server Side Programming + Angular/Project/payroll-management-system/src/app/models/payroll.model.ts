@@ -7,4 +7,5 @@ export interface Payroll {
   bonuses?: number;
   deductions?: number;
   netSalary: number;
+  payDate: Date;
 }

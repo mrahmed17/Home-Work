@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './attendance-detail.component.css'
 })
 export class AttendanceDetailComponent {
+  getEmployeeName(arg0: any) {
+    throw new Error('Method not implemented.');
+  }
 
 }

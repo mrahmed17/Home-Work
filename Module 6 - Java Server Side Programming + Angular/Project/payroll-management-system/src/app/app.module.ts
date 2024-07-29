@@ -8,13 +8,13 @@ import { EmployeeListComponent } from './components/employee/employee-list/emplo
 import { EmployeeDetailComponent } from './components/employee/employee-detail/employee-detail.component';
 import { EmployeeCreateComponent } from './components/employee/employee-create/employee-create.component';
 import { EmployeeEditComponent } from './components/employee/employee-edit/employee-edit.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './pages/login/login.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
+import { RoleGuard } from './guards/role.guard';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { OnboardingComponent } from './pages/onboarding/onboarding.component';
 import { OffboardingComponent } from './pages/offboarding/offboarding.component';
 import { TrainingProgramsComponent } from './pages/training-programs/training-programs.component';
@@ -29,6 +29,11 @@ import { EmployeeFeedbackComponent } from './pages/employee-feedback/employee-fe
 import { SurveysComponent } from './pages/surveys/surveys.component';
 import { HealthProgramsComponent } from './pages/health-programs/health-programs.component';
 import { WellnessResourcesComponent } from './pages/wellness-resources/wellness-resources.component';
+import { LogoutComponent } from './pages/logout/logout.component';
+import { RouterModule } from '@angular/router';
+import { ProfileComponent } from './pages/profile/profile.component';
+
+
 
 
 @NgModule({
@@ -54,18 +59,24 @@ import { WellnessResourcesComponent } from './pages/wellness-resources/wellness-
     SurveysComponent,
     HealthProgramsComponent,
     WellnessResourcesComponent,
-   
+    LogoutComponent,
+    ProfileComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule,
+    // RouterModule.forRoot(appRoutes),
   ],
   providers: [
     provideHttpClient(withFetch()),
     AuthService,
     AuthGuard,
+    RoleGuard,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

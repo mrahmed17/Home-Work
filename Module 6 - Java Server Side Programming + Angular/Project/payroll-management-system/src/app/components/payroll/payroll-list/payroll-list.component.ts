@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PayrollService } from '../../../services/payroll/payroll.service';
+import { PayrollService } from '../../../services/payroll.service';
 import { Payroll } from '../../../models/payroll.model';
 
 @Component({
@@ -8,7 +8,7 @@ import { Payroll } from '../../../models/payroll.model';
   styleUrls: ['./payroll-list.component.css']
 })
 export class PayrollListComponent implements OnInit {
-  payrolls: Payroll[];
+  payrolls: Payroll[] | undefined;
 
   constructor(private payrollService: PayrollService) { }
 

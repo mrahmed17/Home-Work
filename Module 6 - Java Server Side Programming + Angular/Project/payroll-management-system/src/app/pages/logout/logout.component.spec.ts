@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PayrollDeleteComponent } from './payroll-delete.component';
+import { LogoutComponent } from './logout.component';
 
-describe('PayrollDeleteComponent', () => {
-  let component: PayrollDeleteComponent;
-  let fixture: ComponentFixture<PayrollDeleteComponent>;
+describe('LogoutComponent', () => {
+  let component: LogoutComponent;
+  let fixture: ComponentFixture<LogoutComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PayrollDeleteComponent]
+      declarations: [LogoutComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PayrollDeleteComponent);
+    fixture = TestBed.createComponent(LogoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

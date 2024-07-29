@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { EmployeeService } from '../../../services/employee/employee.service';
+import { EmployeeService } from '../../../services/employee.service';
 import { Employee } from '../../../models/employee.model';
 
 @Component({
@@ -10,20 +10,40 @@ import { Employee } from '../../../models/employee.model';
   styleUrls: ['./employee-create.component.css']
 })
 export class EmployeeCreateComponent implements OnInit {
-  employeeForm: FormGroup;
+  employeeForm!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private employeeService: EmployeeService,
     private router: Router
   ) {
+  }
+
+  ngOnInit(): void {
     this.employeeForm = this.fb.group({
       name: ['', Validators.required],
       position: ['', Validators.required],
-      department: ['', Validators.required]
+      departmentId: ['', Validators.required],
+      salary: ['', [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
+      email: ['', Validators.email],
+      phoneNumber: ['', Validators.required],
+      dateOfJoining: ['', Validators.required],
+
     });
   }
-  ngOnInit(): void { }
+
+  createEmployee(): void {
+    if (this.employeeForm.valid) {
+      this.employeeService.createEmployee(this.employeeForm.value).subscribe((response: any) => {
+        console.log('Employee added', response);
+        // Handle success response
+      }, (error: any) => {
+        console.error('Error creating employee', error);
+        // Handle error response
+      });
+    }
+  }
+
 
   onSubmit(): void {
     if (this.employeeForm.valid) {

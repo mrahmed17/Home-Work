@@ -8,7 +8,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let record of attendanceRecords">
-      <td>{{ record.date | date }}</td>
+      <td>{{ record.date }}</td>
       <td>{{ getEmployeeName(record.employeeId) }}</td>
       <td>{{ record.status }}</td>
     </tr>

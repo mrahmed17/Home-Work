@@ -16,8 +16,8 @@
   </div>
   <div>
     <label for="department">Department</label>
-    <input id="department" formControlName="department">
-    <div *ngIf="employeeForm.get('department')?.invalid && employeeForm.get('department')?.touched">
+    <input id="departmentId" formControlName="departmentId">
+    <div *ngIf="employeeForm.get('department')?.invalid && employeeForm.get('departmentId')?.touched">
       Department is required.
     </div>
   </div>
