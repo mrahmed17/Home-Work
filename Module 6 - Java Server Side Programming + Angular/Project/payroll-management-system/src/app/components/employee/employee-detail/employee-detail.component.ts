@@ -11,6 +11,9 @@ import { EmployeeService } from '../../../services/employee.service';
 })
 
 export class EmployeeDetailComponent implements OnInit {
+  goBack() {
+    throw new Error('Method not implemented.');
+  }
   employee: Employee | undefined;
 
   constructor(

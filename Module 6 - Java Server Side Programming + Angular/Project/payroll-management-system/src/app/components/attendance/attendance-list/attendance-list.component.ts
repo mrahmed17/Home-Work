@@ -7,7 +7,12 @@ import { Attendance } from '../../../models/attendance.model';
   templateUrl: './attendance-list.component.html',
   styleUrls: ['./attendance-list.component.css']
 })
+
 export class AttendanceListComponent implements OnInit {
+  getEmployeeName(arg0: any) {
+    throw new Error('Method not implemented.');
+  }
+
   attendances: Attendance[] = [];
 
   constructor(private attendanceService: AttendanceService) { }
